@@ -1,0 +1,16 @@
+.App {
+  height: 100vh;
+  padding: 5px 2px 0px 2px;
+}
+
+body {
+  background-image: url("../Assets/main-background.jpg");
+  background-size: 100%;
+  background-position: top;
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    background-size: 100% 40%;
+  }
+}

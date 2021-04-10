@@ -1,0 +1,10 @@
+.text-center {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.text-center a {
+  color: coral;
+}
+
+footer {
+  font-family: "Kiwi Maru", serif;
+}

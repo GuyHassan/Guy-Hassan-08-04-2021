@@ -1,0 +1,73 @@
+.main-title {
+  padding: 5vh 0 10px 0;
+  text-align: center;
+  font-family: "Kiwi Maru", serif;
+}
+
+.main-title h1 {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.form-input {
+  margin: 10px auto;
+}
+
+.main-title span {
+  color: rgba(135, 44, 187, 0.8);
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  border-color: rgba(190, 49, 255, 0.75);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 5px rgba(190, 49, 255, 0.75);
+  outline: 0 none;
+}
+
+.main-title img {
+  width: 250px;
+}
+
+.card-country {
+  text-align: center;
+  font-family: "Kiwi Maru", serif;
+}
+
+.card-country h2 {
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.card-country hr {
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(190, 49, 255, 0.3),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.card-country h2:hover {
+  cursor: pointer;
+  transition: all 0.5s;
+  color: rgb(22, 1, 31);
+  border: 1px dotted rgb(189, 23, 255);
+  background-color: rgba(158, 135, 158, 0.3);
+  border-radius: 5px;
+}
+
+.main-title span {
+  position: relative;
+  top: 15px;
+  animation: bounce 1s ease infinite alternate;
+}
+
+@keyframes bounce {
+  100% {
+    top: 2px;
+    color: rgb(211, 118, 248);
+  }
+}

@@ -1,0 +1,43 @@
+.each-days {
+  padding: 45px 15px 45px 15px;
+  text-align: center;
+  margin: 10px auto 0 auto;
+  border: 1px solid rgba(248, 106, 11);
+  background-color: rgba(255, 236, 223, 0.8);
+  transition: 1s ease;
+}
+
+.home-degree {
+  text-align: center;
+  font-family: "Kiwi Maru", serif;
+  font-weight: 600;
+}
+.home-degree h3 {
+  text-transform: capitalize;
+  -webkit-text-fill-color: rgba(49, 49, 49, 0.8);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 127, 80);
+  text-shadow: 2px 2px 15px coral;
+  font-weight: 500;
+}
+.btn-favorite-temparture {
+  padding: 10px;
+  border-radius: 25px;
+  transition: 0.5s ease;
+}
+.each-days:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 15px rgba(255, 185, 139, 0.8);
+  background-color: rgba(255, 185, 139, 0.8);
+}
+.btn-favorite-temparture:hover {
+  background-color: rgb(255, 127, 80, 0.5);
+}
+.btn-favorite-temparture:before {
+  content: "|";
+  padding: 20px;
+}
+.btn-favorite-temparture:after {
+  content: "|";
+  padding: 20px;
+}
