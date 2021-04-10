@@ -41,6 +41,7 @@ const App = ({ addCurrentCity, getCurrentCity, addFavoriteAction }) => {
 
   );
 };
+
 const Home = () => {
   return (
     <div className='main-days'>

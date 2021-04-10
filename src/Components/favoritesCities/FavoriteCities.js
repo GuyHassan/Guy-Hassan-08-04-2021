@@ -11,6 +11,7 @@ const FavoriteCities = ({ favCities, fiveDaysForcast, addCurrentCity, addFavorit
     useEffect(() => {
         const storageFavCities = localStorage.getItem("favCities");
 
+        // if has favorite on a localstorage when upload component
         if (storageFavCities && favCities.length === 0) {
             JSON.parse(storageFavCities).forEach((city) => {
                 addFavoriteAction(city);
@@ -20,6 +21,7 @@ const FavoriteCities = ({ favCities, fiveDaysForcast, addCurrentCity, addFavorit
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addFavoriteAction]);
 
+    //rendering list of favorite 
     const ListOfFavorite = () => {
         const days = favCities.map(({ nameCity, key }) => {
             return (fiveDaysForcast[nameCity] ? (

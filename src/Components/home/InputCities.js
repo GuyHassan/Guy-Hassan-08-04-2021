@@ -11,7 +11,8 @@ import herolo from "../../Assets/herolo.png";
 const InputCities = ({ addCurrentCity }) => {
   const [nCity, setCity] = useState({ key: "", nameCity: "" });
   const [citiesFound, setCitiesFound] = useState("");
-
+  
+  // on each click on input field the function call and search 10 cities that start with the charcther
   const onChange = async (event) => {
     const valInput = event.target.value;
 
@@ -24,6 +25,8 @@ const InputCities = ({ addCurrentCity }) => {
 
     setCity({ ...nCity, nameCity: valInput });
   };
+
+  // when user clicked on choose city from the list (send as callback to CardCities)
   const onChooseCity = (currName) => {
     const currCityDetails = citiesFound.filter(
       (details) => currName === details.LocalizedName

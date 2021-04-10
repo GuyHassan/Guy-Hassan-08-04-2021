@@ -1,6 +1,6 @@
 import React from 'react';
 import './InputCities.css';
-
+// autoComplete component - get name and callback useState function and change the state when user is clicked
 const CardCities = ({ name, chosenName }) => {
 
     return (

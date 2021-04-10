@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const apiCities = async (city) => {
   try {
     const response = await axios.get(
-      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=ctfMGwAFaeqHTPmeq6bMma16mGwdIaaI&q=${city}`
+      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM&q=${city}`
     );
     return response.data;
   } catch (err) {
@@ -21,12 +21,13 @@ const reverseLocation = (setCurrLocation, setCurrentForecast) => {
   const success = async (position) => {
     const latitude = position.coords.latitude,
       longitude = position.coords.longitude;
-    const url = `https://api.opencagedata.com/geocode/v1/json?key=9bd28463b86a4353990e330f37c796f4&q=${encodeURIComponent(latitude + "," + longitude)}&pretty=1&no_annotations=1`;
+
+    const url = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM&q=${latitude}%2C${longitude}`;
 
     try {
       const getCityByLat_Lon = await axios.get(url);
-
-      const cityName = getCityByLat_Lon.data.results[0].components.city;
+      console.log(getCityByLat_Lon);
+      const cityName = getCityByLat_Lon.data.LocalizedName;
 
       const getTemp_PropCity = await getForecast(cityName, 1);
 
@@ -37,15 +38,9 @@ const reverseLocation = (setCurrLocation, setCurrentForecast) => {
         key: getTemp_PropCity.key,
       });
       setCurrentForecast(temparture);
-      localStorage.setItem(
-        "autoLocationCity",
-        JSON.stringify({
-          nameCity: getTemp_PropCity.nameCity,
-          key: getTemp_PropCity.key,
-          hour,
-          temp: temparture,
-        })
-      );
+      localStorage.setItem("autoLocationCity", JSON.stringify({
+        nameCity: getTemp_PropCity.nameCity, key: getTemp_PropCity.key, hour, temp: temparture,
+      }));
     } catch (err) {
       errorToast('Something Wrong With The - GeoLocation - API !');
       console.log(err);
@@ -59,7 +54,7 @@ const reverseLocation = (setCurrLocation, setCurrentForecast) => {
   };
 
   const autoLocationCity = JSON.parse(localStorage.getItem("autoLocationCity"));
-
+  
   // modify the auto current city weather in each hour
   if (autoLocationCity === null || autoLocationCity.hour + 1 <= hour) {
     navigator.geolocation.getCurrentPosition(success, error);
@@ -96,7 +91,7 @@ const getForecast = async (cityName, amountDays, cityId = null) => {
       };
       cityId = cityProerties.key;
     }
-    getTemp = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${amountDays}day/${cityId}?apikey=ctfMGwAFaeqHTPmeq6bMma16mGwdIaaI`);
+    getTemp = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${amountDays}day/${cityId}?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM`);
 
   } catch (err) {
     errorToast('Something Wrong With The - Days Forecast - API !');

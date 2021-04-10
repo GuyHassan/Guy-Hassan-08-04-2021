@@ -20,16 +20,17 @@ export const store = createStore(
 function reducer(state = initialState, action) {
     switch (action.type) {
         case "ADD_FAVORITE":
-            // if client click twice on same favorite
+            // if user click twice on same favorite
             const cityExists = state.favCities.some((city) => city.nameCity === action.payload.nameCity)
             if (cityExists) {
                 errorToast('This City Is In Your Favorite !');
                 return { ...state }
             }
+            // enable only 5 favorite at time
             if (state.favCities.length === 5) {
                 state.favCities.shift();
             }
-
+            // updating the storage
             localStorage.setItem("favCities", JSON.stringify([action.payload, ...state.favCities]));
 
             return {
@@ -63,6 +64,7 @@ export const setFiveDays = (fiveDaysForcast) => ({
     payload: fiveDaysForcast,
 });
 
+// when we add current city we update couple of values (forecast and city name)
 export const addCurrentCity = (currentCity) => async (dispatch, getState) => {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
         hour = new Date();
