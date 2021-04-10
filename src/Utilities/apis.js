@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const apiCities = async (city) => {
   try {
     const response = await axios.get(
-      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM&q=${city}`
+      `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM&q=${city}`
     );
     return response.data;
   } catch (err) {
@@ -22,7 +22,7 @@ const reverseLocation = (setCurrLocation, setCurrentForecast) => {
     const latitude = position.coords.latitude,
       longitude = position.coords.longitude;
 
-    const url = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM&q=${latitude}%2C${longitude}`;
+    const url = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM&q=${latitude}%2C${longitude}`;
 
     try {
       const getCityByLat_Lon = await axios.get(url);
@@ -54,7 +54,7 @@ const reverseLocation = (setCurrLocation, setCurrentForecast) => {
   };
 
   const autoLocationCity = JSON.parse(localStorage.getItem("autoLocationCity"));
-  
+
   // modify the auto current city weather in each hour
   if (autoLocationCity === null || autoLocationCity.hour + 1 <= hour) {
     navigator.geolocation.getCurrentPosition(success, error);
@@ -91,7 +91,7 @@ const getForecast = async (cityName, amountDays, cityId = null) => {
       };
       cityId = cityProerties.key;
     }
-    getTemp = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${amountDays}day/${cityId}?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM`);
+    getTemp = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/${amountDays}day/${cityId}?apikey=CSiPIYWEAubHmLLzcNs7OWeDfX8Q5tkM`);
 
   } catch (err) {
     errorToast('Something Wrong With The - Days Forecast - API !');
