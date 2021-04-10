@@ -8,3 +8,9 @@
 footer {
   font-family: "Kiwi Maru", serif;
 }
+
+@media only screen and (max-width: 600px) {
+  footer {
+    margin-top: 25vh;
+  }
+}
